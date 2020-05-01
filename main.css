@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "DOS437";
+    src: url("fonts/DOS437.ttf");
+}
+
 .neubutton {
     background-color: white;
     padding: 10px;
@@ -29,4 +34,77 @@
 }
 .overridehover:active {
     background-color: orangered !important;
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.terminalAppRoot {
+    background: linear-gradient(to right, orangered, purple);
+    height: 100%;
+    overflow: hidden;
+}
+
+.terminalAppDiv {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    
+}
+
+.flexRoot {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    position: absolute;
+    background: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rb { /* Results box */
+    position: relative;
+    z-index: 3;
+    height: 90%;
+    width: 95%;
+    border: 2px solid whitesmoke;
+    background-color: black;
+    opacity: 0.4;
+    color: white;
+    overflow-wrap: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 1%;
+    font-size: 15px;
+    padding-left: 15px;
+}
+
+.ci {
+    position: relative;
+    z-index: 3;
+    width: 95%;
+    height: 3%;
+    margin-top: 1%;
+    border: 2px solid whitesmoke;
+    background-color: black;
+    opacity: 0.4;
+    color: white;
+}
+
+.startupRoot {
+    background-color: black;
+}
+
+.white {
+    color: white !important;
+}
+
+.dos437 {
+    font-family: "DOS437" !important;
 }
