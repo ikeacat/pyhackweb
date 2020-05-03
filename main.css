@@ -108,3 +108,87 @@
 .dos437 {
     font-family: "DOS437" !important;
 }
+
+.missionAppRoot {
+    background: #00264d;
+    height: 100%;
+    overflow: hidden;
+}
+
+#missionRows {
+    display:flex;
+    flex-direction: row;
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    justify-content: center;
+    margin-left: 10%;
+}
+/*
+#missionLeft {
+    height: 100%;
+    background-color: hotpink;
+    width: 50%;
+}
+
+#missionRight {
+    height: 100%;
+    background-color: burlywood;
+    width: 50%;
+}
+*/
+
+#missionLeft {
+    border-right: 2px solid #003b78;
+}
+.missionColumns {
+    width: 50%;
+    height: 100%;
+    word-wrap: break-word;
+    color: white;
+}
+
+.backdark {
+    background-image: url(pics/back-dark.png);
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 10px;
+    transition: all 0.4s linear;
+}
+.backdark:hover {
+    background-color: #c7c7c7
+}
+
+.proportionalTitle {
+    font-size: 150%;
+}
+
+.columnFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.missionViewItem {
+    width: 100%;
+    margin-top: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.4s linear;
+    height: 10%;
+    padding-left: 20px;
+    font-size: 100%;
+    border-radius: 10px; 
+}
+.missionViewItem:hover {
+    background-color: #c7c7c7;
+}
+
+.mviText {
+    text-align: center;
+}

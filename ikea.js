@@ -40,7 +40,10 @@ function processTerminalCommand() {
     if(usrinArray[0] == "help") {
         outputToTerminal("=== HELP ===");
         outputToTerminal("help: View this list.");
-    } else {
+    } else if(usrinArray[0] == "missions") {
+        missionApp();
+    } 
+    else {
         outputToTerminal("Whoops! That command doesnt exist! Use help to view a list of commands.")
     }
 }
@@ -73,5 +76,30 @@ async function startup(from) {
     document.getElementById("rootDIV").innerHTML += "<p class='white dos437'>Booting into PyOS Tabby 1.0...</p>";
     await sleepNowSecs(3);
     document.getElementById("bodytag").classList.remove("startupRoot");
+    terminalAppInit();
+}
+
+async function missionApp() {
+    outputToTerminal("> $MISSIONAPP/init.sh")
+    await sleepNowSecs(2)
+    outputToTerminal("> $TERMINAL/deinit.sh")
+    await sleepNowSecs(3)
+    outputToTerminal("Terminal app deinited.")
+    await sleepNowSecs(1)
+    document.getElementById("bodytag").classList.remove("terminalAppRoot")
+    document.getElementById("bodytag").classList.add("missionAppRoot");
+    document.getElementById("rootDIV").innerHTML = `<div id='missionRows'>
+    <div id='missionLeft' class='missionColumns'></div>
+    <div id='missionRight'class='missionColumns columnFlex'></div>
+    </div>`;
+    document.getElementById("missionLeft").innerHTML = "<button class='backdark' onclick='missionToTerminal()'></button><h1 id='missionTitle'>Missions</h1><br><h1>Current Mission: None</h1>"
+    fitText(document.getElementById("missionTitle"), 0.5)
+    document.getElementById("missionRight").innerHTML = "<div class='missionViewItem'><h1 class='mviText'>Missions List</h1></div><div class='missionViewItem'><h1 class='mviText'>Current Mission</h1></div>";
+    fitText(document.getElementsByClassName("missionViewItem")[0], 5)
+    fitText(document.getElementsByClassName("missionViewItem")[1], 5)
+}
+
+function missionToTerminal() {
+    document.getElementById("bodytag").classList.remove("missionAppRoot");
     terminalAppInit();
 }
