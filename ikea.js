@@ -40,6 +40,7 @@ function processTerminalCommand() {
     if(usrinArray[0] == "help") {
         outputToTerminal("=== HELP ===");
         outputToTerminal("help: View this list.");
+        outputToTerminal("missions: Access the Missions App GUI.");
     } else if(usrinArray[0] == "missions") {
         missionApp();
     } 
