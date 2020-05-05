@@ -44,6 +44,7 @@
     background: linear-gradient(to right, orangered, purple);
     height: 100%;
     overflow: hidden;
+    font-family: Roboto, sans-serif;
 }
 
 .terminalAppDiv {
@@ -113,6 +114,7 @@
     background: #00264d;
     height: 100%;
     overflow: hidden;
+    font-family: "Roboto", sans-serif;
 }
 
 #missionRows {
