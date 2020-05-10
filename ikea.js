@@ -1,7 +1,10 @@
+var missionarray = new Array;
+
 function newGame() {
-    localStorage.clear()
-    resetLocalStorage()
-    startup('start')
+    localStorage.clear();
+    resetMissionDictionary();
+    resetLocalStorage();
+    startup('start');
 }
 
 async function terminalAppInit() {
@@ -29,6 +32,31 @@ function outputToTerminal(msg) {
     document.getElementById("resultBox").innerHTML += "<p id='output'>" + msg + "</p>"
     document.getElementById("output").scrollIntoView(true);
     document.getElementById("output").removeAttribute('id');
+}
+
+function resetMissionDictionary() { // Should only be called at new game.
+    // 0: Not Avaliable
+    // 1: Avaliable, not Started
+    // 2: In Progress
+    // 3: Completed.
+    missionarray[0] = {"name": "Introduction", "status": 1, "source": "NNID", "description": "The introduction to PyOS and your duties."};
+    saveMissionArrayToLS();
+}
+
+function saveMissionArrayToLS() {
+    var msstring = JSON.stringify(missionarray);
+    var msstringlz = LZString.compress(msstring); // We really need to make this small for LS.
+    localStorage.setItem("missionarray", msstringlz);
+}
+
+function debug(key) {
+    if(key == "dcma") {
+        var imported = localStorage.getItem("missionarray");
+        console.log(imported)
+        var dc = LZString.decompress(imported);
+        maparsed = JSON.parse(dc);
+        console.log(maparsed);
+    }
 }
 
 function processTerminalCommand() {
@@ -62,6 +90,7 @@ function resetLocalStorage() {
     localStorage.setItem("name", "Unset");
     localStorage.setItem("pw", "alpine");
     localStorage.setItem("version", "Tabby 1.0");
+    localStorage.setItem("missionarray", missionarray);
 }
 
 async function startup(from) {
@@ -93,14 +122,29 @@ async function missionApp() {
     <div id='missionLeft' class='missionColumns'></div>
     <div id='missionRight'class='missionColumns columnFlex'></div>
     </div>`;
-    document.getElementById("missionLeft").innerHTML = "<button class='backdark' onclick='missionToTerminal()'></button><h1 id='missionTitle'>Missions</h1><br><h1>Current Mission: None</h1>"
-    fitText(document.getElementById("missionTitle"), 0.5)
+    document.getElementById("missionLeft").innerHTML = "<button class='backdark' onclick='missionApp.toTerm()'></button><h1 id='missionTitle'>Missions</h1><br><h1>Current Mission: None</h1>"
+    fitText(document.getElementById("missionTitle"), 0.5);
     document.getElementById("missionRight").innerHTML = "<div class='missionViewItem'><h1 class='mviText'>Missions List</h1></div><div class='missionViewItem'><h1 class='mviText'>Current Mission</h1></div>";
-    fitText(document.getElementsByClassName("missionViewItem")[0], 5)
-    fitText(document.getElementsByClassName("missionViewItem")[1], 5)
-}
+    fitText(document.getElementsByClassName("missionViewItem")[0], 5);
+    fitText(document.getElementsByClassName("missionViewItem")[1], 5);
 
-function missionToTerminal() {
-    document.getElementById("bodytag").classList.remove("missionAppRoot");
-    terminalAppInit();
+    function toTerm() {
+        document.getElementById("bodytag").classList.remove("missionAppRoot");
+        terminalAppInit();
+    }
+
+    function viewMissionTable() {
+        document.getElementById("missionRight").innerHTML = `<table>
+        <thead>
+        <tr>
+        <th colspan="4">Mission List</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td></td></tr>
+        </tbody>
+        </table>`
+    }
+    missionApp.toTerm = toTerm;
+    missionApp.viewMissionTable = viewMissionTable;
 }
