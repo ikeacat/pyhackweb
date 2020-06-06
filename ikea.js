@@ -40,6 +40,7 @@ function resetMissionDictionary() { // Should only be called at new game.
     // 2: In Progress
     // 3: Completed.
     missionarray[0] = {"name": "Introduction", "status": 1, "source": "NNID", "description": "The introduction to PyOS and your duties."};
+    localStorage.setItem("MALoadRange", 0)
     saveMissionArrayToLS();
 }
 
@@ -134,7 +135,7 @@ async function missionApp() {
                 <th colspan="4">Mission List</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="mtbody">
             <tr class='missiontableitems'>
                 <th>Name</th>
                 <th>Source</th>
@@ -143,6 +144,24 @@ async function missionApp() {
             </tr>
         </tbody>
         </table>`
+        var i;
+        var ae = localStorage.getItem("MALoadRange");
+        var lzcompressed = localStorage.getItem("missionArray")
+        var lc = LZString.decompress(lzcompressed)
+        for(i = 0; i <= ae; i++) {
+            var loadin = lc[i]
+            if(loadin.status != 0) {
+                var liname = loadin.name;
+                var lidesc = loadin.description;
+                var listat = loadin.status;
+                var lisorc = loadin.source;
+                document.getElementById("mtbody").innerHTML += "<tr class='missiontableitems' id='newaddtb'></tr>";
+                document.getElementById("mtbody").innerHTML += "<th>" + liname + "</th>";
+                document.getElementById("mtbody").innerHTML += "<th>" + lisorc + "</th>";
+                document.getElementById("mtbody").innerHTML += "<th>" + lidesc + "</th>";
+                document.getElementById("mtbody").innerHTML += "<th>" + listat + "</th>";
+            }
+        }
     });
     fitText(document.getElementsByClassName("missionViewItem")[0], 5);
     fitText(document.getElementsByClassName("missionViewItem")[1], 5);
