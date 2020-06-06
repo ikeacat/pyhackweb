@@ -194,3 +194,11 @@
 .mviText {
     text-align: center;
 }
+
+.missiontableroot {
+    background-color: #0053a8;
+}
+
+.missiontableitems {
+    border: 1px solid whitesmoke;
+}

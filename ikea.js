@@ -124,7 +124,24 @@ async function missionApp() {
     </div>`;
     document.getElementById("missionLeft").innerHTML = "<button class='backdark' onclick='missionApp.toTerm()'></button><h1 id='missionTitle'>Missions</h1><br><h1>Current Mission: None</h1>"
     fitText(document.getElementById("missionTitle"), 0.5);
-    document.getElementById("missionRight").innerHTML = "<div class='missionViewItem'><h1 class='mviText'>Missions List</h1></div><div class='missionViewItem'><h1 class='mviText'>Current Mission</h1></div>";
+    document.getElementById("missionRight").innerHTML = "<div class='missionViewItem' id='mslButton'><h1 class='mviText'>Missions List</h1></div><div class='missionViewItem'><h1 class='mviText'>Current Mission</h1></div>";
+    document.getElementById("mslButton").addEventListener("click", function() {
+        document.getElementById("missionRight").innerHTML = `<table class='missiontableroot'>
+        <thead>
+            <tr>
+                <th colspan="4">Mission List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class='missiontableitems'>
+                <th>Name</th>
+                <th>Source</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </tbody>
+        </table>`
+    });
     fitText(document.getElementsByClassName("missionViewItem")[0], 5);
     fitText(document.getElementsByClassName("missionViewItem")[1], 5);
 
@@ -133,18 +150,5 @@ async function missionApp() {
         terminalAppInit();
     }
 
-    function viewMissionTable() {
-        document.getElementById("missionRight").innerHTML = `<table>
-        <thead>
-        <tr>
-        <th colspan="4">Mission List</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr><td></td></tr>
-        </tbody>
-        </table>`
-    }
     missionApp.toTerm = toTerm;
-    missionApp.viewMissionTable = viewMissionTable;
 }
