@@ -110,12 +110,7 @@ async function startup(from) {
 }
 
 async function missionApp() {
-    outputToTerminal("> $MISSIONAPP/init.sh")
-    await sleepNowSecs(2)
-    outputToTerminal("> $TERMINAL/deinit.sh")
-    await sleepNowSecs(3)
-    outputToTerminal("Terminal app deinited.")
-    await sleepNowSecs(1)
+    
     document.getElementById("bodytag").classList.remove("terminalAppRoot")
     document.getElementById("bodytag").classList.add("missionAppRoot");
     document.getElementById("rootDIV").innerHTML = `<div id='missionRows'>
@@ -150,5 +145,28 @@ async function missionApp() {
         terminalAppInit();
     }
 
+    function viewMissionTable() {
+        document.getElementById("missionRight").innerHTML = `<table>
+        <thead>
+        <tr>
+        <th colspan="4">Mission List</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td></td></tr>
+        </tbody>
+        </table>`
+    }
+
+    async function initApp() {
+        outputToTerminal("> $MISSIONAPP/init.sh")
+        await sleepNowSecs(2)
+        outputToTerminal("> $TERMINAL/deinit.sh")
+        await sleepNowSecs(3)
+        outputToTerminal("Terminal app deinited.")
+        await sleepNowSecs(1)
+    }
     missionApp.toTerm = toTerm;
+    missionApp.viewMissionTable = viewMissionTable;
+    missionApp.initApp = initApp;
 }
