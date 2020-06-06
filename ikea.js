@@ -110,7 +110,14 @@ async function startup(from) {
 }
 
 async function missionApp() {
-    
+    console.log("Starting mission init.")
+    outputToTerminal("> $MISSIONAPP/init.sh")
+    await sleepNowSecs(2)
+    outputToTerminal("Checking for gtk=3.0...")
+    await sleepNowSecs(1)
+    outputToTerminal("Launching...")
+    await sleepNowSecs(1)
+    console.log("Launching GUI.")
     document.getElementById("bodytag").classList.remove("terminalAppRoot")
     document.getElementById("bodytag").classList.add("missionAppRoot");
     document.getElementById("rootDIV").innerHTML = `<div id='missionRows'>
