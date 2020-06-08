@@ -91,7 +91,7 @@ function resetLocalStorage() {
     localStorage.setItem("name", "Unset");
     localStorage.setItem("pw", "alpine");
     localStorage.setItem("version", "Tabby 1.0");
-    localStorage.setItem("missionarray", missionarray);
+    resetMissionDictionary();
 }
 
 async function startup(from) {
