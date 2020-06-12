@@ -11,7 +11,7 @@ async function terminalAppInit() {
     document.getElementById("bodytag").classList.add("terminalAppRoot");
     document.getElementById("rootDIV").innerHTML = "<div class='flexRoot' id='fr'><div class='rb' id='resultBox'></div><input id='commandInput' class='ci' placeholder='Enter command here...'></input></div>";
     await sleepNowSecs(2)
-    outputToTerminal("Reticulting splines...");
+    outputToTerminal("Reticulating splines...");
     await sleepNowSecs(2);
     outputToTerminal("Processing command outputs...");
     await sleepNowSecs(2)
@@ -91,7 +91,7 @@ function resetLocalStorage() {
     localStorage.setItem("name", "Unset");
     localStorage.setItem("pw", "alpine");
     localStorage.setItem("version", "Tabby 1.0");
-    localStorage.setItem("missionarray", missionarray);
+    resetMissionDictionary();
 }
 
 async function startup(from) {
