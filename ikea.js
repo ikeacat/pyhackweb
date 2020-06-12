@@ -146,7 +146,7 @@ async function missionApp() {
         </table>`
         var i;
         var ae = localStorage.getItem("MALoadRange");
-        var lzcompressed = localStorage.getItem("missionArray")
+        var lzcompressed = localStorage.getItem("missionarray")
         var lc = LZString.decompress(lzcompressed)
         for(i = 0; i <= ae; i++) {
             var loadin = lc[i]
