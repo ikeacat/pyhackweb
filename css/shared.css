@@ -1,0 +1,7 @@
+/* Import Fonts. */
+@font-face {
+    font-family: "DOS437";
+    src: url(fonts/DOS437.ttf);
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap'); /* Roboto */
+
